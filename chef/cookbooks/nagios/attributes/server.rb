@@ -35,7 +35,7 @@ set[:nagios][:log_dir]   = "/var/log/nagios3"
 set[:nagios][:log_dir]   = "/var/log/nagios" if redhat_platform? or suse_platform?
 set[:nagios][:cache_dir] = "/var/cache/nagios3"
 set[:nagios][:cache_dir] = "/var/log/nagios" if redhat_platform? or suse_platform?
-set[:nagios][:state_dir] = "/var/lib/nagios3" 
+set[:nagios][:state_dir] = "/var/lib/nagios3"
 set[:nagios][:state_dir] = "/var/log/nagios" if redhat_platform?
 set[:nagios][:state_dir] = "/var/lib/nagios" if suse_platform?
 set[:nagios][:docroot]   = "/usr/share/nagios3/htdocs"
@@ -67,7 +67,7 @@ default[:nagios][:default_contact_groups]  = %w(admins)
 default[:nagios][:sysadmin_email]          = "root@localhost"
 default[:nagios][:sysadmin_sms_email]      = "root@localhost"
 default[:nagios][:server_auth_method]      = "openid"
-default[:nagios][:monitor_ipmi]            = true 
+default[:nagios][:monitor_ipmi]            = true
 default[:nagios][:monitor_raid]            = false
 
 # This setting is effectively sets the minimum interval (in seconds) nagios can handle.
@@ -91,3 +91,15 @@ default[:nagios][:config] = {}
 default[:nagios][:config][:environment] = "nagios-config-default"
 default[:nagios][:config][:mode] = "full"
 
+default[:nagios][:users] = [
+  {
+    groups: "sysadmin",
+    id: "nagiosadmin",
+    htpassword: "Ah4LiEWT3GBMs",
+    openid: "",
+    nagios: {
+      pager: "nagiosadmin_pager@example.com",
+      email: "nagiosadmin@example.com"
+    }
+  }
+]
