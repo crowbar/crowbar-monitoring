@@ -1,0 +1,35 @@
+{
+  "id": "bc-template-nagios",
+  "description": "Common monitoring service for the cluster that can be used by other barclamps",
+  "attributes": {
+    "nagios": {
+      "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
+      "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
+      "monitor_ipmi": true,
+      "monitor_raid": true
+    }
+  },
+  "deployment": {
+    "nagios": {
+      "crowbar-revision": 0,
+      "crowbar-applied": false,
+      "element_states": {
+        "nagios-server": [ "readying", "ready", "applying" ],
+        "nagios-client": [ "readying", "ready", "applying" ]
+      },
+      "elements": {},
+      "element_order": [
+        [ "nagios-server", "nagios-client" ]
+      ],
+      "config": {
+        "environment": "nagios-base-config",
+        "mode": "full",
+        "transitions": true,
+        "transition_list": [
+          "discovered"
+        ]
+      }
+    }
+  }
+}
+
