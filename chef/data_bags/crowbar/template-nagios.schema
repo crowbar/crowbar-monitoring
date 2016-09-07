@@ -2,7 +2,7 @@
   "type": "map",
   "required": true,
   "mapping": {
-    "id": { "type": "str", "required": true, "pattern": "/^bc-nagios-|^bc-template-nagios$/" },
+    "id": { "type": "str", "required": true, "pattern": "/^nagios-|^template-nagios$/" },
     "description": { "type": "str", "required": true },
     "attributes": {
       "type": "map",

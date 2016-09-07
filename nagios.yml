@@ -22,7 +22,7 @@ barclamp:
   version: 0
   user_managed: true
   member:
-    - 'crowbar'
+    - 'openstack'
 
 crowbar:
   layout: 1
