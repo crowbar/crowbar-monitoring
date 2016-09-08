@@ -7,6 +7,7 @@
       "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
       "monitor_ipmi": true,
       "monitor_raid": true,
+      "port": 5321,
       "users": [
         {
           "id": "nagiosadmin",
