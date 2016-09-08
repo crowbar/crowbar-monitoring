@@ -51,6 +51,7 @@ when "suse"
     monitoring-plugins-common
     monitoring-plugins-all
     monitoring-plugins-nrpe
+    monitoring-plugins-nagios
   }
 end
 
