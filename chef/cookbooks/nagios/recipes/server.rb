@@ -53,22 +53,21 @@ end
 nodes.delete_if { |n| n["state"] == "delete" }
 
 # Get a list of system administration users
-sysadmins = search(:users, 'groups:sysadmin')
 members = Array.new
-sysadmins.each do |s|
-  Chef::Log.debug("Add system admin user [" +  s['id'] + "]")
+node[:nagios][:users].each do |u|
+  Chef::Log.debug("Add system admin user [" +  u['id'] + "]")
   members << s['id']
 end
 
 # Make sure that the nodes have a field "ipaddress" that is the admin address
 hosts = {}
 platforms = []
-nodes.each do |n| 
+nodes.each do |n|
   ip = Nagios::Evaluator.get_value_by_type(n, :admin_ip_eval)
   hosts[ip] = n unless ip.nil?
   platforms << n[:platform] unless platforms.include?(n[:platform])
-end 
-# Build a hash of service name to the server fulfilling that role (NOT a list ) 
+end
+# Build a hash of service name to the server fulfilling that role (NOT a list )
 role_list = Array.new
 service_hosts = Hash.new
 search(:role, "*:*") do |r|
@@ -79,7 +78,7 @@ search(:role, "*:*") do |r|
   end
 end
 
-# Get the public domain name 
+# Get the public domain name
 if node[:public_domain]
   public_domain = node[:public_domain]
 else
@@ -227,7 +226,7 @@ end
 #
 nova_commands = %w{ check_nova_manage check_nova_compute check_nova_scheduler }
 
-swift_svcs = %w{swift-object swift-object-auditor swift-object-replicator swift-object-updater} 
+swift_svcs = %w{swift-object swift-object-auditor swift-object-replicator swift-object-updater}
 swift_svcs =swift_svcs + %w{swift-container swift-container-auditor swift-container-replicator swift-container-updater}
 swift_svcs =swift_svcs + %w{swift-account swift-account-reaper swift-account-auditor swift-account-replicator}
 swift_svcs =swift_svcs + ["swift-proxy"]
@@ -272,4 +271,3 @@ include_recipe "nagios::monitor_hw" if mon_hw == true
 
 # End of recipe transactions
 Chef::Log.debug("END nagios-server")
-

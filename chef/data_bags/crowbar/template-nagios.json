@@ -7,16 +7,18 @@
       "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
       "monitor_ipmi": true,
       "monitor_raid": true,
-      "users": {
-        "id": "nagiosadmin",
-        "groups": "sysadmin",
-        "htpasswd": "Ah4LiEWT3GBMs",
-        "openid": "",
-        "nagios": {
-          "pager": "nagiosadmin_pager@example.com",
-          "email": "nagiosadmin@example.com"
+      "users": [
+        {
+          "id": "nagiosadmin",
+          "groups": "sysadmin",
+          "htpasswd": "Ah4LiEWT3GBMs",
+          "openid": "",
+          "nagios": {
+            "pager": "nagiosadmin_pager@example.com",
+            "email": "nagiosadmin@example.com"
+          }
         }
-      }
+      ]
     }
   },
   "deployment": {

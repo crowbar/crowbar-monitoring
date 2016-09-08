@@ -17,22 +17,28 @@
             "monitor_ipmi": { "type": "bool", "required": false },
             "monitor_raid": { "type": "bool", "required": false },
             "users": {
-              "type": "map",
+              "type": "seq",
               "required": true,
-              "mapping": {
-                "id": { "type": "str", "required": true, "assert": "val == 'nagiosadmin'" },
-                "groups": { "type": "str", "required": true },
-                "htpasswd": { "type": "str", "required": true },
-                "openid": { "type": "str" },
-                "nagios": {
+              "sequence": [
+                {
                   "type": "map",
                   "required": true,
                   "mapping": {
-                     "pager": { "type": "str", "required": true },
-                     "email": { "type": "str", "required": true, "name": "Email" }
+                    "id": { "type": "str", "required": true, "assert": "val == 'nagiosadmin'" },
+                    "groups": { "type": "str", "required": true },
+                    "htpasswd": { "type": "str", "required": true },
+                    "openid": { "type": "str" },
+                    "nagios": {
+                      "type": "map",
+                      "required": true,
+                      "mapping": {
+                         "pager": { "type": "str", "required": true },
+                         "email": { "type": "str", "required": true, "name": "Email" }
+                       }
+                    }
                   }
                 }
-              }
+              ]
             }
           }
         }
