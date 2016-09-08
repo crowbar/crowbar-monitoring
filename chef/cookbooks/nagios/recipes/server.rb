@@ -56,7 +56,7 @@ nodes.delete_if { |n| n["state"] == "delete" }
 members = Array.new
 node[:nagios][:users].each do |u|
   Chef::Log.debug("Add system admin user [" +  u['id'] + "]")
-  members << s['id']
+  members << u['id']
 end
 
 # Make sure that the nodes have a field "ipaddress" that is the admin address
