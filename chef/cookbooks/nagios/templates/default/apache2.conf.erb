@@ -1,7 +1,7 @@
 <VirtualHost *:80>
   ServerAdmin     <%= node[:nagios][:sysadmin_email] %>
   ServerName      <%= node[:fqdn] %>
-  ServerAlias     nagios nagios.<%= node[:app_environment]%>.<%= @public_domain %>
+  ServerAlias     nagios nagios.<%= @public_domain %>
   DocumentRoot    <%= node[:nagios][:docroot] %>
   CustomLog       <%= node[:nagios][:log_dir] %>/apache_access.log combined
   ErrorLog        <%= node[:nagios][:log_dir] %>/apache_error.log
@@ -29,9 +29,7 @@
     AuthName "Nagios Server"
     AuthType Basic
     AuthUserFile "<%= node[:nagios][:dir] %>/htpasswd.users"
-    require valid-user
-    Order allow,deny
-    Allow from all
+    Require valid-user
   </Location>
 <% end -%>
 

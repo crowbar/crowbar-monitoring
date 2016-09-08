@@ -98,7 +98,7 @@ when "redhat","centos"
   nagios_svc_name = "nagios"
   do_chk_config = true
 when "suse"
-  pkg_list = %w{ nagios }
+  pkg_list = %w{ nagios nagios-www }
   nagios_svc_name = "nagios"
   do_chk_config = true
 end

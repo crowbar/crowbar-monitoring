@@ -91,15 +91,4 @@ default[:nagios][:config] = {}
 default[:nagios][:config][:environment] = "nagios-config-default"
 default[:nagios][:config][:mode] = "full"
 
-default[:nagios][:users] = [
-  {
-    groups: "sysadmin",
-    id: "nagiosadmin",
-    htpasswd: "Ah4LiEWT3GBMs",
-    openid: "",
-    nagios: {
-      pager: "nagiosadmin_pager@example.com",
-      email: "nagiosadmin@example.com"
-    }
-  }
-]
+default[:nagios][:users] = []
