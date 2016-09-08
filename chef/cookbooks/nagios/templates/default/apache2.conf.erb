@@ -29,9 +29,7 @@
     AuthName "Nagios Server"
     AuthType Basic
     AuthUserFile "<%= node[:nagios][:dir] %>/htpasswd.users"
-    require valid-user
-    Order allow,deny
-    Allow from all
+    Require valid-user
   </Location>
 <% end -%>
 
