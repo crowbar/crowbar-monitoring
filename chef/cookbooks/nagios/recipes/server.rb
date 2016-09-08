@@ -54,7 +54,6 @@ nodes.delete_if { |n| n["state"] == "delete" }
 
 # Get a list of system administration users
 members = Array.new
-puts node[:nagios][:users]
 node[:nagios][:users].each do |u|
   Chef::Log.debug("Add system admin user [" +  u['id'] + "]")
   members << u['id']
@@ -182,11 +181,16 @@ case node[:nagios][:server_auth_method]
 when "openid"
   include_recipe "apache2::mod_auth_openid"
 else
-  template "#{node[:nagios][:dir]}/htpasswd.users" do
-    source "htpasswd.users.erb"
-    owner "nagios"
-    group node[:apache][:group]
-    mode 0640
+  nagios_htpasswd "#{node[:nagios][:dir]}/htpasswd.users" do
+    action :delete
+  end
+
+  node[:nagios][:users].each do |admin|
+    nagios_htpasswd "#{node[:nagios][:dir]}/htpasswd.users" do
+      action :add
+      user admin['id']
+      password admin['htpasswd']
+    end
   end
 end
 
