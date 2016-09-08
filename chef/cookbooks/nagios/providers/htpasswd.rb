@@ -26,7 +26,13 @@ action :delete do
 end
 
 action :add do
-  file @new_resource.file do
+  options = ""
+  unless File.exist?(@new_resource.file)
+    options = " -c "
+  end
+  options += " #{@new_resource.file} #{@new_resource.name} #{@new_resource.password}"
 
+  execute 'add_htpasswd_user' do
+    command "htpasswd #{options}"
   end
 end
