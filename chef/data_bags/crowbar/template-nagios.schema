@@ -16,6 +16,7 @@
             "admin_interface_eval": { "type": "str", "required": true },
             "monitor_ipmi": { "type": "bool", "required": false },
             "monitor_raid": { "type": "bool", "required": false },
+            "port": { "type": "int", "required": true },
             "users": {
               "type": "seq",
               "required": true,

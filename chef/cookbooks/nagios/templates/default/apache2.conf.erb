@@ -1,4 +1,6 @@
-<VirtualHost *:80>
+Listen <%= node[:nagios][:port] %>
+
+<VirtualHost *:<%= node[:nagios][:port] %>>
   ServerAdmin     <%= node[:nagios][:sysadmin_email] %>
   ServerName      <%= node[:fqdn] %>
   ServerAlias     nagios nagios.<%= @public_domain %>
@@ -30,6 +32,7 @@
     AuthType Basic
     AuthUserFile "<%= node[:nagios][:dir] %>/htpasswd.users"
     Require valid-user
+    Require all granted
   </Location>
 <% end -%>
 

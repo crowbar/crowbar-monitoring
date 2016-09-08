@@ -92,3 +92,5 @@ default[:nagios][:config][:environment] = "nagios-config-default"
 default[:nagios][:config][:mode] = "full"
 
 default[:nagios][:users] = []
+
+default[:nagios][:port] = 5321
