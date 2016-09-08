@@ -18,23 +18,8 @@
 # limitations under the License.
 #
 
-action :delete do
-  file new_resource.file do
-    action :delete
-    only_if { ::File.exists?(new_resource.file)}
-  end
-end
+actions :add, :delete
 
-action :add do
-  unless ::File.exists?(new_resource.file)
-    file new_resource.file do
-       owner "nagios"
-       group node[:apache][:group]
-       mode 0640
-    end
-  end
-
-  execute 'add_htpasswd_user' do
-    command "htpasswd -b #{new_resource.file} #{new_resource.user} #{new_resource.password}"
-  end
-end
+attribute :file, kind_of: String, name_attribute: true
+attribute :user, kind_of: String
+attribute :password, kind_of: String

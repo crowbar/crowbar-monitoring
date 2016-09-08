@@ -32,7 +32,6 @@ Listen <%= node[:nagios][:port] %>
     AuthType Basic
     AuthUserFile "<%= node[:nagios][:dir] %>/htpasswd.users"
     Require valid-user
-    Require all granted
   </Location>
 <% end -%>
 
