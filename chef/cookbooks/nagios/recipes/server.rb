@@ -54,6 +54,7 @@ nodes.delete_if { |n| n["state"] == "delete" }
 
 # Get a list of system administration users
 members = Array.new
+puts node[:nagios][:users]
 node[:nagios][:users].each do |u|
   Chef::Log.debug("Add system admin user [" +  u['id'] + "]")
   members << u['id']

@@ -48,10 +48,8 @@ when "redhat","centos"
   }
 when "suse"
   pkg_list=%w{
-    nagios-nrpe
-    nagios-plugins
-    nagios-plugins-nrpe
-    nagios-plugins-extras
+    monitoring-plugins-common
+    monitoring-plugins-all
   }
 end
 
@@ -72,4 +70,3 @@ directory "/etc/nagios/nrpe.d" do
   mode "0755"
   action :create
 end
-
