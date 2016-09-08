@@ -186,9 +186,6 @@ else
     owner "nagios"
     group node[:apache][:group]
     mode 0640
-    variables(
-      :sysadmins => sysadmins
-    )
   end
 end
 
@@ -247,7 +244,7 @@ nagios_conf "services" do
 end
 
 nagios_conf "contacts" do
-  variables :admins => sysadmins, :members => members
+  variables :admins => node[:nagios][:users], :members => members
 end
 
 nagios_conf "hostgroups" do
