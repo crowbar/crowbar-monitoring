@@ -50,6 +50,7 @@ when "suse"
   pkg_list=%w{
     monitoring-plugins-common
     monitoring-plugins-all
+    monitoring-plugins-nrpe
   }
 end
 
