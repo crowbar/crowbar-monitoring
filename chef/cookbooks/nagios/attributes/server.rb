@@ -95,7 +95,7 @@ default[:nagios][:users] = [
   {
     groups: "sysadmin",
     id: "nagiosadmin",
-    htpassword: "Ah4LiEWT3GBMs",
+    htpasswd: "Ah4LiEWT3GBMs",
     openid: "",
     nagios: {
       pager: "nagiosadmin_pager@example.com",
