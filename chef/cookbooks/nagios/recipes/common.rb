@@ -48,8 +48,8 @@ when "redhat","centos"
   }
 when "suse"
   pkg_list=%w{
-    monitoring-plugins-common
-    monitoring-plugins-all
+    nagios-core-plugins
+    nagios-core-plugins-all
   }
 end
 
