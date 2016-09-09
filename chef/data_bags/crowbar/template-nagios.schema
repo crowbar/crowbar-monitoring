@@ -40,6 +40,13 @@
                   }
                 }
               ]
+            },
+            "client": {
+              "type": "map",
+              "required": true,
+              "mapping": {
+                "allowed_host": { "type": "str", "required": false }
+              }
             }
           }
         }

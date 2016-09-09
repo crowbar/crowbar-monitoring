@@ -30,9 +30,9 @@ nodes = search(:node, "roles:provisioner-server#{env_filter}")
 
 # Get a list of provisioner addresses, if the provisioner is up by now.
 if nodes and not nodes.empty?
-  prov_addresses = nodes.map do |n| 
+  prov_addresses = nodes.map do |n|
     n = node if node.name == n.name
-    Nagios::Evaluator.get_value_by_type(n, :admin_ip_eval) 
+    Nagios::Evaluator.get_value_by_type(n, :admin_ip_eval)
   end
   # The master admin node is the first one in the list
   provisioner_ip =  prov_addresses[0]
@@ -47,12 +47,17 @@ domain_name = node[:dns][:domain]
 # Create a list of monitoring hosts (filter duplicate ip's in the list)
 dup_list = Hash.new
 mon_host = Array.new
-search(:node, "roles:nagios-server#{env_filter}") do |n|
-  ip = Nagios::Evaluator.get_value_by_type(n, :admin_ip_eval)
-  next if ip.nil?
-  if (!dup_list.has_key?(ip))
-    mon_host << ip
-    dup_list[ip] = ip
+
+if node[:nagios][:client].has_key? "allowed_host"
+  mon_host = [ node[:nagios][:client][:allowed_host] ]
+else
+  search(:node, "roles:nagios-server#{env_filter}") do |n|
+    ip = Nagios::Evaluator.get_value_by_type(n, :admin_ip_eval)
+    next if ip.nil?
+    if (!dup_list.has_key?(ip))
+      mon_host << ip
+      dup_list[ip] = ip
+    end
   end
 end
 
@@ -104,7 +109,7 @@ end
 ntp_servers = node[:ntp][:ntp_servers] unless node[:ntp].nil? or node[:ntp][:ntp_servers].nil? or node[:ntp][:ntp_servers].empty?
 ntp_servers = "127.0.0.1" if node[:ntp].nil? or node[:ntp][:ntp_servers].nil? or node[:ntp][:ntp_servers].empty?
 
-#### setup variables for the different components   
+#### setup variables for the different components
 
 own_admin_ip = Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, "admin").address
 
@@ -153,4 +158,3 @@ EOH
     action :run
   end
 end
-

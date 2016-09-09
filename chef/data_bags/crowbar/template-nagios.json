@@ -19,7 +19,10 @@
             "email": "nagiosadmin@example.com"
           }
         }
-      ]
+      ],
+      "client": {
+        "allowed_host": ""
+      }
     }
   },
   "deployment": {
