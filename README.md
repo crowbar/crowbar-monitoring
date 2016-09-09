@@ -16,12 +16,6 @@ functions of the Crowbar deployment mechanics while other barclamps extend the s
 About this barclamp
 -------------------
 
-[![Build Status](https://travis-ci.org/crowbar/barclamp-nagios.svg?branch=master)](https://travis-ci.org/crowbar/barclamp-nagios)
-[![Code Climate](https://codeclimate.com/github/crowbar/barclamp-nagios/badges/gpa.svg)](https://codeclimate.com/github/crowbar/barclamp-nagios)
-[![Test Coverage](https://codeclimate.com/github/crowbar/barclamp-nagios/badges/coverage.svg)](https://codeclimate.com/github/crowbar/barclamp-nagios)
-[![Dependency Status](https://gemnasium.com/crowbar/barclamp-nagios.svg)](https://gemnasium.com/crowbar/barclamp-nagios)
-[![Join the chat at https://gitter.im/crowbar/crowbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/crowbar/crowbar)
-
 Information for this barclamp is maintained on the [Crowbar Framework Wiki](https://github.com/crowbar/crowbar/wiki)
 
 Contact
