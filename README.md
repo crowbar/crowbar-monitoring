@@ -1,5 +1,4 @@
-Welcome to a Barclamp for the Crowbar Framework project
-=======================================================
+# Crowbar: Monitoring
 
 The code and documentation is distributed under the [Apache 2 license](http://www.apache.org/licenses/LICENSE-2.0.html).
 Contributions back to the source are encouraged.
@@ -8,18 +7,13 @@ The [Crowbar Framework](https://github.com/crowbar/crowbar) is currently maintai
 an [OpenStack](http://openstack.org) installation framework but is prepared to be a much broader function tool. It was
 originally developed by the [Dell CloudEdge Solutions Team](http://dell.com/openstack).
 
-A Barclamp is a module component that implements functionality for Crowbar. Core barclamps operate the essential
-functions of the Crowbar deployment mechanics while other barclamps extend the system for specific applications.
+## Badges
 
-**This functonality of this barclamp DOES NOT stand alone, the Crowbar Framework is required**
+[![Build Status](https://travis-ci.org/crowbar/crowbar-monitoring.svg?branch=master)](https://travis-ci.org/crowbar/crowbar-monitoring)
+[![Dependency Status](https://gemnasium.com/crowbar/crowbar-monitoring.svg)](https://gemnasium.com/crowbar/crowbar-monitoring)
+[![Join the chat at https://gitter.im/crowbar/crowbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/crowbar/crowbar)
 
-About this barclamp
--------------------
-
-Information for this barclamp is maintained on the [Crowbar Framework Wiki](https://github.com/crowbar/crowbar/wiki)
-
-Contact
--------
+## Contact
 
 To get in contact with the developers you have multiple options, all of them are listed below:
 
@@ -27,8 +21,7 @@ To get in contact with the developers you have multiple options, all of them are
 * [Gitter Chat](https://gitter.im/crowbar/crowbar)
 * [Freenode Webchat](http://webchat.freenode.net/?channels=%23crowbar)
 
-Legals
-------
+## Legals
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
 an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
