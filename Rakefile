@@ -1,6 +1,6 @@
 #
 # Copyright 2011-2013, Dell
-# Copyright 2013-2014, SUSE LINUX Products GmbH
+# Copyright 2013-2017, SUSE LINUX GmbH
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ begin
     task.compress = true
     task.digest = true
 
-    sprockets.js_compressor = :closure
+    sprockets.js_compressor = :uglifier
     sprockets.css_compressor = :sass
   end
 
